@@ -1,29 +1,27 @@
-//
-//  ViewController.swift
-//  ContactList
-//
-//  Created by Лилия Андреева on 25.10.2023.
-//
-
 import UIKit
 
-class ContactListTabBar: UITabBarController {
-
+final class ContactListTabBar: UITabBarController {
+    
+    var persons = Person.getPerson()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        transferData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func transferData() {
+        guard let viewControllers else { return }
+        
+        viewControllers.forEach {
+            if let navigationVC = $0 as? UINavigationController {
+                let personsVC = navigationVC.topViewController
+                
+                if let personsVC = personsVC as? PersonsListTableVC {
+                    personsVC.persons = persons
+                } else if let personListDetailTNC = personsVC as? PersonsListDetailTableVC {
+                    personListDetailTNC.persons = persons
+                }
+            }
+        }
     }
-    */
-
 }

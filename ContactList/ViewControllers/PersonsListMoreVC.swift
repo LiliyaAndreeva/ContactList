@@ -1,13 +1,6 @@
-//
-//  PersonsListMore.swift
-//  ContactList
-//
-//  Created by Лилия Андреева on 25.10.2023.
-//
-
 import UIKit
 
-class PersonsListMoreVC: UIViewController {
+final class PersonsListMoreVC: UIViewController {
 
     
     @IBOutlet weak var phoneLabel: UILabel!
@@ -17,20 +10,10 @@ class PersonsListMoreVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        phoneLabel.text = person.phone
-        emailLabel.text = person.email
+        
+        title = person.fullName
+        phoneLabel.text = "Phone: \(person.phone)"
+        emailLabel.text = "Email: \(person.email)"
       
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

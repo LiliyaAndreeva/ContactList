@@ -18,23 +18,22 @@ extension Person {
         let contacts = DataStore()
         var persons: [Person] = []
         
-//        var names = contacts.names.shuffled()
-//        var surnames = contacts.surnames.shuffled()
-//        var phoneNumbers = contacts.phoneNumbers.shuffled()
-//        var emails = contacts.emails.shuffled()
+        let names = contacts.names.shuffled()
+        let surnames = contacts.surnames.shuffled()
+        let phoneNumbers = contacts.phoneNumbers.shuffled()
+        let emails = contacts.emails.shuffled()
         
         
-        for _ in 0...14 {
-            let person = Person(name: contacts.names.randomElement() ?? "",
-                                surname: contacts.surnames.randomElement() ?? "",
-                                phone: contacts.phoneNumbers.randomElement() ?? "",
-                                email: contacts.emails.randomElement() ?? "")
+        for index in 0..<names.count {
+              
+            let person = Person(name: names[index],
+                                surname: surnames[index],
+                                phone: phoneNumbers[index],
+                                email: emails[index])
             persons.append(person)
         }
         return persons
-        
     }
-    
 }
     
    
